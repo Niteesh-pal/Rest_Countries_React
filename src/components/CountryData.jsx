@@ -2,7 +2,7 @@ function CountryData({filteredApiData}){
 
 
         return(
-        
+            filteredApiData.length > 0 ?
             filteredApiData.map((item,index)=>{
                 
                 return <div className="cards-country"  key={index}>    
@@ -24,6 +24,11 @@ function CountryData({filteredApiData}){
                     
             </div>
             })
+            :(
+                <div className="countryError">
+                    <h2>Country does not found!!</h2>
+                </div>
+            )
             
         )
 

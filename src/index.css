@@ -51,7 +51,7 @@ li {
   font-size: 20px;
   font-weight: var(--bolder-weight);
 }
-.dark{
+.dark {
   font-weight: var(--bold-weight);
 }
 
@@ -68,7 +68,8 @@ li {
   margin-bottom: 2rem;
 }
 
-.search input,.filter-btn {
+.search input,
+.filter-btn {
   width: 100%;
   border: none;
   outline: none;
@@ -80,7 +81,7 @@ input,
   font-size: var(--Homepage-text);
   color: var(--dark-gray);
 }
-.filter{
+.filter {
   width: 15rem;
   /* border: 1px solid black; */
   border-radius: 0.5rem;
@@ -88,15 +89,14 @@ input,
   position: relative;
 }
 
-.filter-btn{
-  
+.filter-btn {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.filter-option ul{
-  position:absolute;
+.filter-option ul {
+  position: absolute;
   width: 12rem;
   /* border: 1px solid black; */
   background-color: var(--white);
@@ -104,31 +104,27 @@ input,
   padding: 1rem 0.2rem;
   border-radius: 0.5rem;
   box-shadow: var(--shadow);
- 
 }
-.filter-option ul li{
+.filter-option ul li {
   padding: 0.4rem 1rem;
   cursor: pointer;
-  
 }
-.filter-option ul li:hover{
+.filter-option ul li:hover {
   background-color: var(--very-light-gray);
 }
 
-.filter-option{
+.filter-option {
   display: none;
   position: absolute;
   top: 110%;
 }
-.active{
+.active {
   display: block;
 }
 
-
-
 .cards-country {
   box-shadow: var(--shadow);
-  /* margin: 2rem 0rem; */
+  margin: 2rem 0rem;
   border-radius: 0.5rem;
 }
 
@@ -154,24 +150,35 @@ input,
 .country-content li span {
   font-weight: var(--bold-weight);
 }
-
-.loader{
-  width: 95vw;
+.countryError h2 {
+  color: var(--dark-gray);
+  font-size: 18px;
+}
+.countryError {
+  width: 90vw;
   height: 50vh;
-  /* border: 1px solid black; */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-
-
+.loader {
+  width: 95vw;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 @media screen and (min-width: 1025px) {
   .container {
-    padding: 2rem 4rem;}
+    padding: 2rem 4rem;
+  }
+  .cards-country {
+    margin: 0rem;
+  }
 
-  .filter-container{
+  .filter-container {
     display: flex;
     justify-content: space-between;
   }
@@ -187,9 +194,13 @@ input,
 }
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   .container {
-    padding: 2rem 3rem;}
+    padding: 2rem 3rem;
+  }
 
-  .filter-container{
+  .cards-country {
+    margin: 0rem;
+  }
+  .filter-container {
     display: flex;
     justify-content: space-between;
   }
@@ -206,9 +217,13 @@ input,
 
 @media screen and (min-width: 520px) and (max-width: 768px) {
   .container {
-    padding: 2rem 3rem;}
+    padding: 2rem 3rem;
+  }
+  .cards-country {
+    margin: 0rem;
+  }
 
-  .filter-container{
+  .filter-container {
     display: flex;
     justify-content: space-between;
   }
