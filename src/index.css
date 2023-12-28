@@ -155,6 +155,15 @@ input,
   font-weight: var(--bold-weight);
 }
 
+.loader{
+  width: 95vw;
+  height: 50vh;
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 
 

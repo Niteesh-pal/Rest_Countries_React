@@ -2,6 +2,7 @@ function CountryData({filteredApiData}){
 
 
         return(
+        
             filteredApiData.map((item,index)=>{
                 
                 return <div className="cards-country"  key={index}>    
@@ -23,6 +24,7 @@ function CountryData({filteredApiData}){
                     
             </div>
             })
+            
         )
 
 

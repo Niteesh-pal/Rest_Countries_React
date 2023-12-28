@@ -1,6 +1,7 @@
 import "../index.css";
 import { useEffect,useState } from "react";
 import CountryData from "./CountryData";
+import BarLoader from "react-spinners/BarLoader";
 
 
 function Country(){
@@ -62,7 +63,10 @@ function Country(){
         </div>
         <div className="country-container container">
           {
-            isLoading === true? <CountryData filteredApiData={filteredApiData}/> : "Loading ..."
+            isLoading === true? <CountryData filteredApiData={filteredApiData}/> : 
+            <div className="loader">
+            <BarLoader/>
+            </div>
           }
         </div>
 
