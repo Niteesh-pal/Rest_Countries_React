@@ -127,8 +127,9 @@ input,
   background-color: var(--white);
   border-radius: 0.3rem;
   box-shadow: var(--shadow);
+  z-index: 3;
   /* padding: 0.5rem 0rem; */
-  left:50%;
+  left:53%;
   top:0px
 
 }
@@ -146,7 +147,9 @@ input,
   border-radius: 0.5rem ;
 } */
 .filter-region a{
+  border:1px solid black;
   padding: 0rem 9.5rem 0rem 0rem;
+  
 }
 
 
@@ -232,7 +235,6 @@ input,
     left: -80.5%;
   }
   
- 
   .search {
     width: 40%;
     margin-bottom: 0rem;
