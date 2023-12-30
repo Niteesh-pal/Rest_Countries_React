@@ -2,16 +2,23 @@ import '../index.css';
 import { useEffect, useState } from 'react';
 import CountryData from './CountryData';
 import BarLoader from 'react-spinners/BarLoader';
+import DropdownOption from './DropdownOption';
 
 function Country() {
-  let region = [];
   let subregion = [];
   const [apiData, setApiData] = useState([]);
   const [userInput, setUserInput] = useState('');
-  const [value, setValue] = useState('Filter By Region');
-  const [active, setActive] = useState(false);
+  // const [active, setActive] = useState(false);
   const [filterRegion, setFilteredRegion] = useState('Filter By Region');
+  const [sort, setSort] = useState('Sort by');
   const [isLoading, setIsLoading] = useState(false);
+
+  const sortValue = {
+    'Area by Ascending': [undefined],
+    'Area by Descending': [undefined],
+    'Population by Ascending': [undefined],
+    'Population by Descending': [undefined],
+  };
 
   useEffect(() => {
     fetch(`https://restcountries.com/v3.1/all`)
@@ -35,7 +42,18 @@ function Country() {
     );
   });
 
-  // console.log(filterRegion);
+    if(sort === "Area by Ascending"){
+      filteredApiData.sort((a,b)=>a["area"]-b["area"])
+    }
+    if(sort === "Area by Descending"){
+      filteredApiData.sort((a,b)=>(a["area"] > b["area"] ? -1 : 1))
+    }
+    if(sort === "Population by Ascending"){
+      filteredApiData.sort((a,b)=>a["population"]-b["population"])
+    }
+    if(sort === "Population by Descending"){
+      filteredApiData.sort((a,b)=>(a["population"] > b["population"] ? -1 : 1))
+    }
 
   subregion = apiData.reduce((acc, curr) => {
     if (!acc[curr.region]) {
@@ -60,34 +78,32 @@ function Country() {
             onChange={(e) => setUserInput(e.target.value.trim().toLowerCase())}
           />
         </div>
-        <div className="filter">
-          <div className="filter-btn" onClick={() => setActive(!active)}>
-            <span className="filter-btn-text">
-              {filterRegion ? filterRegion : 'Filter By Region..'}
-            </span>
-            <i className="fa-solid fa-angle-down"></i>
+        <div className="filter-sort-container">
+          <div className="filter">
+            <div className="filter-btn">
+              <span>{filterRegion}</span>
+              <i className="fa-solid fa-angle-down"></i>
+            </div>
+            <div className="option">
+              <DropdownOption
+                value={subregion}
+                state={'Filter By Region'}
+                setValue={setFilteredRegion}
+              />
+            </div>
           </div>
-          <div className={active ? 'filter-option active' : 'filter-option'}>
-            <ul
-              className="filter-region"
-              onClick={(e) => {
-                setFilteredRegion(e.target.textContent);
-              }}
-            >
-              <li>Filter By Region</li>
-              {Object.keys(subregion).map((region, index) => {
-                return (
-                  <li key={index} className="region">
-                    <a>{region}</a>
-                    <ul onClick={(active) => setActive(!active)}>
-                      {subregion[region].map((name) =>
-                        name ? <li>{name}</li> : ''
-                      )}
-                    </ul>
-                  </li>
-                );
-              })}
-            </ul>
+          <div className="sort">
+            <div className="sort-btn">
+              <span>{sort}</span>
+              <i className="fa-solid fa-angle-down"></i>
+            </div>
+            <div className="option">
+              <DropdownOption
+                value={sortValue}
+                state={'Sort By'}
+                setValue={setSort}
+              />
+            </div>
           </div>
         </div>
       </div>

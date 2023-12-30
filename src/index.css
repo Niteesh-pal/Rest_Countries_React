@@ -32,7 +32,7 @@ body {
 li {
   list-style: none;
 }
-li:hover{
+li:hover {
   background-color: var(--very-light-gray);
 }
 
@@ -76,7 +76,7 @@ li:hover{
 }
 
 .search input,
-.filter-btn {
+.filter-btn ,.sort-btn{
   width: 100%;
   border: none;
   outline: none;
@@ -89,86 +89,80 @@ input,
   color: var(--dark-gray);
 }
 
-
-.filter{
-  position: relative;
+.filter-sort-container{
+  display: flex;
+  gap:1rem;
 }
 
-.filter, .filter-region {
-  width: 15rem;
-  /* border: 1px solid black; */
-  background-color: var(--white);
-  border-radius: 0.5rem;
-  box-shadow: var(--shadow);
-}
-
-.region{
-  position: relative;
-}
-
-
-.filter-region{
-  /* border: 1px solid black; */
-  position:absolute;
-  top: 110%;
-}
-
-.filter-region li{
-  /* border: 1px solid red; */
-  padding: 0.2rem 1rem;
-}
-
-.filter-region ul{
-  position: absolute;
-  display: none;
-}
-.filter-region li ul {
+.filter,.filter .option, .sort{
   width: 12rem;
+}
+
+
+.filter, .sort{
+  /* border: 1px solid black; */
   background-color: var(--white);
-  border-radius: 0.3rem;
   box-shadow: var(--shadow);
-  z-index: 3;
-  /* padding: 0.5rem 0rem; */
-  left:53%;
-  top:0px
-
+  border-radius: 0.5rem;
+  position: relative;
 }
-.filter-region li:hover > ul{
-    display: block;
-    /* border: 1px solid black; */
-}
-
-.filter-region li:hover > ul:hover{
-  display: block;
-}
-
-/* .filter-option li{
-  cursor: pointer;
-  border-radius: 0.5rem ;
-} */
-.filter-region a{
-  border:1px solid black;
-  padding: 0rem 9.5rem 0rem 0rem;
-  
-}
-
-
-.filter-btn {
+.filter-btn,.sort-btn{
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.filter-option{
-  display: none;
+.item-container ul{
+  width: 12rem;
+}
+
+.item-container, .item-container ul{
+  /* width: 12rem; */
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+  border-radius: 0.5rem;
+}
+
+.filter:hover .option , .sort:hover .option{
+  display: block;
 }
 
 
+.option{
+  top: 106%;
+  /* border: 1px solid red; */
+  position: absolute;
+  display: none;
+}
 
+.item-container li{
+  /* border: 1px solid black; */
+  border-radius: 0.5rem;
+}
+.item-container > li{
+  /* border: 1px solid green; */
+  position: relative;
+}
 
-.active {
+.item-container li > ul{
+  display: none;
+}
+.item-container li:hover > ul{
   display: block;
-} 
+}
+
+.item-container ul{
+  position: absolute;
+  top: 0px;
+  left: 75%;
+  z-index: 3;
+}
+p{
+  /* border: 1px solid blue; */
+  border-radius: 0.5rem;
+  padding: 0.3rem 1rem;
+}
+
 
 .cards-country {
   box-shadow: var(--shadow);
@@ -230,14 +224,17 @@ input,
     display: flex;
     justify-content: space-between;
   }
-
-  .filter-region li ul{
-    left: -80.5%;
-  }
-  
   .search {
     width: 40%;
     margin-bottom: 0rem;
+  }
+  
+  .filter-sort-container{
+    display: flex;
+    gap:1rem
+  }
+  .item-container ul{
+    left: -100%;
   }
   .country-container {
     display: grid;
@@ -257,6 +254,7 @@ input,
     display: flex;
     justify-content: space-between;
   }
+  
   .search {
     width: 40%;
     margin-bottom: 0rem;
