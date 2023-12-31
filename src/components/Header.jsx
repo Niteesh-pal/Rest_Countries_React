@@ -3,31 +3,31 @@ import useTheme from '../context/themeContext';
 import '../index.css';
 
 function Header() {
+  const { lightTheme, darkTheme } = useTheme();
+  const [theme, setTheme] = useState(true);
 
-    const {lightTheme, darkTheme} = useTheme();
-    const [theme, setTheme] = useState(false)
-   
-    const handleThemeMode = ()=>{
-        setTheme((theme)=>!theme)
-        if(theme){
-            console.log("dark",theme)
-            darkTheme();
-        }
-        else{
-            console.log("light", theme)
-            lightTheme();
-        }
+  
+
+    
+
+    if (theme) {
+      console.log('light', theme);
+      lightTheme();
+    } else {
+      console.log('dark', theme);
+      darkTheme();
     }
-    // console.log(theme);
+  
+  // console.log(theme);
   return (
     <div className="header">
       <div className="container header-content">
         <div className="logo">
           <h1>Where in the World</h1>
         </div>
-        <div className="dark-mode" onClick={handleThemeMode}>
+        <div className="dark-mode" onClick={()=>setTheme(!theme)}>
           <i className="fa-regular fa-moon"></i>
-          <span className="dark-text">Dark</span>
+          <span className="dark-text">Dark Mode</span>
         </div>
       </div>
     </div>
