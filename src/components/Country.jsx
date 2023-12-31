@@ -8,7 +8,7 @@ function Country() {
   let subregion = [];
   const [apiData, setApiData] = useState([]);
   const [userInput, setUserInput] = useState('');
-  // const [active, setActive] = useState(false);
+  
   const [filterRegion, setFilteredRegion] = useState('Filter By Region');
   const [sort, setSort] = useState('Sort by');
   const [isLoading, setIsLoading] = useState(false);

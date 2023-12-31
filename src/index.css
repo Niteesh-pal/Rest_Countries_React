@@ -1,7 +1,7 @@
 :root {
   --dark-blue: hsl(209, 23%, 22%);
   --very-dark-blue: hsl(207, 26%, 17%);
-  --very-dark-blue: hsl(200, 15%, 8%);
+  --darker-blue: hsl(200, 15%, 8%);
   --dark-gray: hsl(0, 0%, 52%);
   --very-light-gray: hsl(0, 0%, 98%);
   --white: hsl(0, 0%, 100%);
@@ -25,16 +25,27 @@
   font-family: var(--font-family);
 }
 
+.light{
+  --primary-color :var(--very-light-gray);
+  --secondary-color:var(--white);
+  --third-color:var(--dark-gray);
+}
+.dark{
+  --primary-color :var(--very-dark-blue);
+  --secondary-color:var(--dark-blue);
+  --third-color:var(--white);
+    color: var(--white);
+}
+
 body {
-  background-color: var(--very-light-gray);
+  background-color: var(--primary-color);
+
 }
 
 li {
   list-style: none;
 }
-li:hover {
-  background-color: var(--very-light-gray);
-}
+
 
 .container {
   padding: 1rem;
@@ -48,7 +59,7 @@ li:hover {
 .header-content {
   display: flex;
   justify-content: space-between;
-  background-color: var(--white);
+  background-color: var(--secondary-color);
 }
 .header-content h1 {
   font-size: 20px;
@@ -58,7 +69,7 @@ li:hover {
 .dark-mode {
   cursor: pointer;
 }
-.dark {
+.dark-text{
   font-weight: var(--bold-weight);
 }
 
@@ -67,9 +78,9 @@ li:hover {
   /* border: 1px solid red; */
   display: flex;
   align-items: center;
-  color: var(--dark-gray);
+  color: var(--third-color);
   border-radius: 0.5rem;
-  background-color: var(--white);
+  background-color: var(--secondary-color);
   box-shadow: var(--shadow);
   padding: 0rem 1rem;
   margin-bottom: 2rem;
@@ -86,12 +97,12 @@ li:hover {
 input,
 ::placeholder {
   font-size: var(--Homepage-text);
-  color: var(--dark-gray);
+  color: var(--third-color);
 }
 
 .filter-sort-container{
   display: flex;
-  gap:1rem;
+  gap:0.5rem;
 }
 
 .filter,.filter .option, .sort{
@@ -101,15 +112,23 @@ input,
 
 .filter, .sort{
   /* border: 1px solid black; */
-  background-color: var(--white);
+  background-color: var(--secondary-color);
   box-shadow: var(--shadow);
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
   position: relative;
+  
 }
 .filter-btn,.sort-btn{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
+}
+
+.filter-btn span , .sort-btn span{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space:nowrap;
 }
 
 .item-container ul{
@@ -118,26 +137,31 @@ input,
 
 .item-container, .item-container ul{
   /* width: 12rem; */
-  background-color: var(--white);
+  background-color: var(--secondary-color);
   box-shadow: var(--shadow);
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
 }
 
 .filter:hover .option , .sort:hover .option{
   display: block;
 }
 
-
 .option{
-  top: 106%;
+  top: 105%;
   /* border: 1px solid red; */
   position: absolute;
   display: none;
 }
 
+.item-container li:hover {
+  background-color:rgb(220, 220, 220);
+  
+}
+
 .item-container li{
   /* border: 1px solid black; */
-  border-radius: 0.5rem;
+  border-radius: 0.2rem;
 }
 .item-container > li{
   /* border: 1px solid green; */
@@ -163,11 +187,17 @@ p{
   padding: 0.3rem 1rem;
 }
 
+.active{
+  display: none;
+}
+
 
 .cards-country {
   box-shadow: var(--shadow);
   margin: 2rem 0rem;
   border-radius: 0.5rem;
+  background-color: var(--secondary-color);
+  /* border: 1px solid white; */
 }
 
 .country-image img {
@@ -179,6 +209,7 @@ p{
 
 .country-content {
   padding: 1rem 1rem 2rem 1rem;
+  
 }
 
 .country-content li h1 {
@@ -233,7 +264,11 @@ p{
     display: flex;
     gap:1rem
   }
+  
+
+  
   .item-container ul{
+    
     left: -100%;
   }
   .country-container {
@@ -253,6 +288,13 @@ p{
   .filter-container {
     display: flex;
     justify-content: space-between;
+  }
+  .filter,.filter .option, .sort{
+    width: 11rem;
+  }
+  .item-container ul{
+    width: 11rem;
+    left: -100%;
   }
   
   .search {
@@ -275,12 +317,25 @@ p{
   }
 
   .filter-container {
-    display: flex;
+    display: block;
+    /* flex-wrap: wrap; */
     justify-content: space-between;
   }
+  .filter-sort-container{
+    display: flex;
+    gap:0.5rem;
+  }
+  .filter,.filter .option, .sort{
+    width: 10rem;
+  }
+
+  .item-container ul{
+    width: 10rem;
+    left: 100%;
+  }
   .search {
-    width: 40%;
-    margin-bottom: 0rem;
+    width: 100%;
+    margin-bottom: rem;
   }
   .country-container {
     display: grid;
