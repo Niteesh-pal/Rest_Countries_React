@@ -3,15 +3,18 @@ import { useEffect, useState } from 'react';
 import CountryData from './CountryData';
 import BarLoader from 'react-spinners/BarLoader';
 import DropdownOption from './DropdownOption';
+import ErrorPage from './ErrorPage';
+import useTheme from '../context/themeContext';
 
 function Country() {
   let subregion = [];
   const [apiData, setApiData] = useState([]);
   const [userInput, setUserInput] = useState('');
-  
   const [filterRegion, setFilteredRegion] = useState('Filter By Region');
   const [sort, setSort] = useState('Sort by');
   const [isLoading, setIsLoading] = useState(false);
+  const [iserror, setisError] = useState(null);
+  const {themeMode} = useTheme();
 
   const sortValue = {
     'Area by Ascending': [undefined],
@@ -26,9 +29,13 @@ function Country() {
       .then((data) => {
         setApiData(data);
         setIsLoading(true);
+        console.log(data)
       })
       .catch((error) => {
-        console.error(error);
+        console.log(error);
+        setIsLoading(false);
+        setisError('something Wrong');
+        console.log('jfkjkj');
       });
   }, []);
 
@@ -42,18 +49,20 @@ function Country() {
     );
   });
 
-    if(sort === "Area by Ascending"){
-      filteredApiData.sort((a,b)=>a["area"]-b["area"])
-    }
-    if(sort === "Area by Descending"){
-      filteredApiData.sort((a,b)=>(a["area"] > b["area"] ? -1 : 1))
-    }
-    if(sort === "Population by Ascending"){
-      filteredApiData.sort((a,b)=>a["population"]-b["population"])
-    }
-    if(sort === "Population by Descending"){
-      filteredApiData.sort((a,b)=>(a["population"] > b["population"] ? -1 : 1))
-    }
+  if (sort === 'Area by Ascending') {
+    filteredApiData.sort((a, b) => a['area'] - b['area']);
+  }
+  if (sort === 'Area by Descending') {
+    filteredApiData.sort((a, b) => (a['area'] > b['area'] ? -1 : 1));
+  }
+  if (sort === 'Population by Ascending') {
+    filteredApiData.sort((a, b) => a['population'] - b['population']);
+  }
+  if (sort === 'Population by Descending') {
+    filteredApiData.sort((a, b) =>
+      a['population'] > b['population'] ? -1 : 1
+    );
+  }
 
   subregion = apiData.reduce((acc, curr) => {
     if (!acc[curr.region]) {
@@ -67,7 +76,11 @@ function Country() {
     return acc;
   }, []);
 
-  return (
+ 
+
+  return iserror !== null ? (
+    <ErrorPage error={iserror}/>
+  ) : (
     <>
       <div className="filter-container container">
         <div className="search">
@@ -107,12 +120,12 @@ function Country() {
           </div>
         </div>
       </div>
-      <div className="country-container container">
+      <div className={isLoading?"country-container container":""}>
         {isLoading === true ? (
           <CountryData filteredApiData={filteredApiData} />
         ) : (
           <div className="loader">
-            <BarLoader />
+            <BarLoader color={themeMode === 'dark' ? 'white' : 'black'}/>
           </div>
         )}
       </div>
