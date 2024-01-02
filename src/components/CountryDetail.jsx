@@ -103,7 +103,7 @@ const CountryDetail = () => {
                       ))}
                     </>
                   ) : (
-                    <>No Boundaries</>
+                    <>No Border</>
                   )}
                 </ul>
               </div>

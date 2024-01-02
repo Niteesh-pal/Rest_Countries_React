@@ -14,7 +14,7 @@ function Country() {
   const [sort, setSort] = useState('Sort by');
   const [isLoading, setIsLoading] = useState(false);
   const [iserror, setisError] = useState(null);
-  const {themeMode} = useTheme();
+  const { themeMode } = useTheme();
 
   const sortValue = {
     'Area by Ascending': [undefined],
@@ -29,7 +29,6 @@ function Country() {
       .then((data) => {
         setApiData(data);
         setIsLoading(true);
-        console.log(data)
       })
       .catch((error) => {
         console.log(error);
@@ -76,10 +75,8 @@ function Country() {
     return acc;
   }, []);
 
- 
-
   return iserror !== null ? (
-    <ErrorPage error={iserror}/>
+    <ErrorPage error={iserror} />
   ) : (
     <>
       <div className="filter-container container">
@@ -120,12 +117,12 @@ function Country() {
           </div>
         </div>
       </div>
-      <div className={isLoading?"country-container container":""}>
+      <div className={isLoading ? 'country-container container' : ''}>
         {isLoading === true ? (
           <CountryData filteredApiData={filteredApiData} />
         ) : (
           <div className="loader">
-            <BarLoader color={themeMode === 'dark' ? 'white' : 'black'}/>
+            <BarLoader color={themeMode === 'dark' ? 'white' : 'black'} />
           </div>
         )}
       </div>
