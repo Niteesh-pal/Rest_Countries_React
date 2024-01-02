@@ -293,6 +293,7 @@ p {
 .country-detail li {
   font-size: var(--Detail-page);
   margin: 0.5rem 0rem;
+  
 }
 
 .country-border ul {
@@ -301,13 +302,23 @@ p {
   gap: 1rem;
   margin: 1rem 0rem;
 }
+.country-border span{
+  font-weight: var(--bolder-weight);
+}
 
 .country-border ul li {
   /* border: 1px solid black; */
   padding: 0.5rem 1rem;
   background-color: var(--secondary-color);
   box-shadow: var(--shadow);
-  border-radius: 0.2rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.country-border a{
+  text-decoration: none;
+  color: inherit;
+  
 }
 
 .Error {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import useTheme from '../context/themeContext';
 import BarLoader from 'react-spinners/BarLoader';
 import ErrorPage from './ErrorPage';
@@ -95,7 +95,11 @@ const CountryDetail = () => {
                   {data.borders ? (
                     <>
                       {data.borders.map((border, index) => (
-                        <li key={index}>{border}</li>
+                        <li key={index}>
+                          <Link to={`/country/${border.toLowerCase()}`}>
+                          {border}
+                          </Link>
+                          </li>
                       ))}
                     </>
                   ) : (
