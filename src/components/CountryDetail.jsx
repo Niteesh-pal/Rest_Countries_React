@@ -15,11 +15,14 @@ const CountryDetail = () => {
     fetch(`https://restcountries.com/v3.1/alpha/${code.code}`)
       .then((res) => res.json())
       .then((data) => {
-        setData(data[0]);
+        if (data.message === undefined) {
+          setData(data[0]);
+        } else {
+          setIsError(data.message);
+        }
       })
       .catch((error) => {
         setIsError('Something Went Wrong.... Try   Again');
-        console.log(error);
       });
   }, [code]);
 
@@ -97,9 +100,9 @@ const CountryDetail = () => {
                       {data.borders.map((border, index) => (
                         <li key={index}>
                           <Link to={`/country/${border.toLowerCase()}`}>
-                          {border}
+                            {border}
                           </Link>
-                          </li>
+                        </li>
                       ))}
                     </>
                   ) : (

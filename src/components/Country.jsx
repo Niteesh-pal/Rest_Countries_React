@@ -27,13 +27,17 @@ function Country() {
     fetch(`https://restcountries.com/v3.1/all`)
       .then((data) => data.json())
       .then((data) => {
-        setApiData(data);
-        setIsLoading(true);
+        if (data.message === undefined) {
+          setApiData(data);
+          setIsLoading(true);
+        } else {
+          setisError(data.message);
+        }
       })
       .catch((error) => {
         console.log(error);
         setIsLoading(false);
-        setisError('something Wrong');
+        setisError('Page Not Found');
         console.log('jfkjkj');
       });
   }, []);
